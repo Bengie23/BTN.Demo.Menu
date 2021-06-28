@@ -3,6 +3,7 @@ using BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest;
 using BTN.Demo.Menu.Domain.Validation;
 using BTN.Demo.Menu.Services.Dto;
 using BTN.Demo.Menu.Services.Dto.Transformers;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,6 +37,29 @@ namespace BTN.Demo.Menu.Services
                                         .FromSingleEvaluator()
                                         .WithContext(allDrinks, customerAge)
                                         .Evaluate();
+
+            return context.Data.AsExternalDrinks();
+        }
+
+        public async Task<IQueryable<DrinkDto>> GetDrinksMenuWhenInStock()
+        {
+            var allDrinks = await repo.GetDrinks();
+            var context = RequestBuilder.BuildDrinkMenuRequestForCustomerByCustomerAge()
+                                        .FromSingleEvaluator()
+                                        .WithContext(allDrinks,true)
+                                        .Evaluate();
+
+            return context.Data.AsExternalDrinks();
+        }
+
+        public async Task<IQueryable<DrinkDto>> GetDrinksMenuWhenInStockForCustomer(int customerAge)
+        {
+            var allDrinks = await repo.GetDrinks();
+            var evaluators = new List<IEvaluator>();
+            evaluators.Add(RequestBuilder.BuildDrinkMenuRequestForCustomerByCustomerAge());
+            evaluators.Add(RequestBuilder.BuildDrinkMenuRequestForInStockItems());
+
+            var context = evaluators.WithContext(allDrinks, customerAge, true);
 
             return context.Data.AsExternalDrinks();
         }

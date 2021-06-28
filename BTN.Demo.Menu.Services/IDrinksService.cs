@@ -10,10 +10,23 @@ namespace BTN.Demo.Menu.Services
     public interface IDrinksService
     {
         /// <summary>
-        /// Retrieves a drink menu for given customer
+        /// Retrieves a drink menu for given customer age
         /// </summary>
         /// <param name="customerAge"></param>
         /// <returns></returns>
         Task<IQueryable<DrinkDto>> GetDrinksMenuForCustomer(int customerAge);
+
+        /// <summary>
+        /// Retrieves a drink menu for In-Stock Items
+        /// </summary>
+        /// <returns></returns>
+        Task<IQueryable<DrinkDto>> GetDrinksMenuWhenInStock();
+
+        /// <summary>
+        /// Retrieves a drink menu for In-Stokc Items and given customer age
+        /// </summary>
+        /// <param name="customerAge"></param>
+        /// <returns></returns>
+        Task<IQueryable<DrinkDto>> GetDrinksMenuWhenInStockForCustomer(int customerAge);
     }
 }

@@ -20,6 +20,15 @@ namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest
         }
 
         /// <summary>
+        /// Creates required Evaluator for Drink Menu Request for InStock Items
+        /// </summary>
+        /// <returns></returns>
+        public static IEvaluator BuildDrinkMenuRequestForInStockItems()
+        {
+            return new StockEvaluator();
+        }
+
+        /// <summary>
         /// Create a List of Evaluators based on single given evaluator
         /// </summary>
         /// <param name="evaluator"></param>
@@ -41,6 +50,22 @@ namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest
         public static DrinkMenuContext WithContext(this List<IEvaluator> evaluationGroup, IQueryable<Drink> drinks, int customerAge)
         {
             return new DrinkMenuContext(drinks, customerAge) 
+            {
+                Evaluators = evaluationGroup
+            };
+        }
+
+        public static DrinkMenuContext WithContext(this List<IEvaluator> evaluationGroup, IQueryable<Drink> drinks, int customerAge, bool evaluateInStock)
+        {
+            return new DrinkMenuContext(drinks, customerAge, evaluateInStock)
+            {
+                Evaluators = evaluationGroup
+            };
+        }
+
+        public static DrinkMenuContext WithContext(this List<IEvaluator> evaluationGroup, IQueryable<Drink> drinks,bool evaluateInStock)
+        {
+            return new DrinkMenuContext(evaluateInStock)
             {
                 Evaluators = evaluationGroup
             };

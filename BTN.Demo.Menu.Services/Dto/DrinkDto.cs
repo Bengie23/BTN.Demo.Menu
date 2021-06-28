@@ -7,5 +7,7 @@
     {
         public string Name { get; set; }
         public string BrandName { get; set; }
+
+        public bool InStock { get; set; }
     }
 }
