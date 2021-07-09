@@ -20,13 +20,19 @@ namespace BTN.Demo.Menu.Services
         /// Retrieves a drink menu for In-Stock Items
         /// </summary>
         /// <returns></returns>
-        Task<IQueryable<DrinkDto>> GetDrinksMenuWhenInStock();
+        Task<IQueryable<DrinkDto>> GetInStockDrinksMenu();
 
         /// <summary>
         /// Retrieves a drink menu for In-Stokc Items and given customer age
         /// </summary>
         /// <param name="customerAge"></param>
         /// <returns></returns>
-        Task<IQueryable<DrinkDto>> GetDrinksMenuWhenInStockForCustomer(int customerAge);
+        Task<IQueryable<DrinkDto>> GetInStockDrinksMenuForCustomer(int customerAge);
+
+        /// <summary>
+        /// Retrieves a drink menu with all drinks
+        /// </summary>
+        /// <returns></returns>
+        Task<IQueryable<DrinkDto>> GetDrinksMenu();
     }
 }

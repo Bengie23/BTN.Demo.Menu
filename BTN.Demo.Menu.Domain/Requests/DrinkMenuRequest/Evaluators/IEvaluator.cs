@@ -1,4 +1,4 @@
-﻿namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest
+﻿namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest.Evaluators
 {
     /// <summary>
     /// Interface for evaluator instances of Drink Menu

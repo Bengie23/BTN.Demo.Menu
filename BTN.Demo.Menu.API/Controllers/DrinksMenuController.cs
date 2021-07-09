@@ -20,9 +20,33 @@ namespace BTN.Demo.Menu.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<DrinkDto>> Get(int customerAge)
+        public async Task<IEnumerable<DrinkDto>> Get(int? customerAge, bool onlyInStock = false)
         {
-            var drinks = await service.GetDrinksMenuForCustomer(customerAge);
+            if (onlyInStock)
+            {
+                if (customerAge.HasValue)
+                {
+                    var inStockForCustomerDrinks = await service.GetInStockDrinksMenuForCustomer(customerAge.Value);
+
+                    return inStockForCustomerDrinks;
+                }
+                else
+                {
+                    var inStockDrinks = await service.GetInStockDrinksMenu();
+
+                    return inStockDrinks;
+                }
+
+            }
+
+            if (customerAge.HasValue)
+            {
+                var drinksForCustomer = await service.GetDrinksMenuForCustomer(customerAge.Value);
+
+                return drinksForCustomer;
+            }
+
+            var drinks = await service.GetDrinksMenu();
 
             return drinks;
         }

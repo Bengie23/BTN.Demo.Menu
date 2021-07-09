@@ -1,5 +1,6 @@
 ﻿using BTN.Demo.Menu.Domain.Entities;
 using BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest;
+using BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest.Evaluators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace BTN.Demo.Menu.Tests.Domain.Requests.DrinkMenuRequest
             var data = new List<Drink>();
             data.Add(new Drink() { AvailableAtAge = 100 });
             data.Add(new Drink() { AvailableAtAge = 200 });
-            var context = new DrinkMenuContext(data.AsQueryable(),101);
+            var context = new DrinkMenuContext(data.AsQueryable(), new Dictionary<string, object>() { { AgeEvaluator.CustomerAgeKey, 101 } });
 
             //Act
             evaluator.Evaluate(context);
@@ -37,7 +38,7 @@ namespace BTN.Demo.Menu.Tests.Domain.Requests.DrinkMenuRequest
             data.Add(new Drink() { AvailableAtAge = 300 });
             data.Add(new Drink() { AvailableAtAge = 400 });
             data.Add(new Drink() { AvailableAtAge = 500 });
-            var context = new DrinkMenuContext(data.AsQueryable(), 301);
+            var context = new DrinkMenuContext(data.AsQueryable(), new Dictionary<string, object>() { {AgeEvaluator.CustomerAgeKey, 301 } });
 
             //Act
             evaluator.Evaluate(context);
@@ -57,7 +58,7 @@ namespace BTN.Demo.Menu.Tests.Domain.Requests.DrinkMenuRequest
             data.Add(new Drink() { AvailableAtAge = 300 });
             data.Add(new Drink() { AvailableAtAge = 400 });
             data.Add(new Drink() { AvailableAtAge = 500 });
-            var context = new DrinkMenuContext(data.AsQueryable(), 1);
+            var context = new DrinkMenuContext(data.AsQueryable(), new Dictionary<string, object>() { { AgeEvaluator.CustomerAgeKey, 1 } });
 
             //Act
             evaluator.Evaluate(context);
@@ -77,7 +78,7 @@ namespace BTN.Demo.Menu.Tests.Domain.Requests.DrinkMenuRequest
             data.Add(new Drink() { AvailableAtAge = 300 });
             data.Add(new Drink() { AvailableAtAge = 400 });
             data.Add(new Drink() { AvailableAtAge = 500 });
-            var context = new DrinkMenuContext(data.AsQueryable(), 501);
+            var context = new DrinkMenuContext(data.AsQueryable(), new Dictionary<string, object>() { { AgeEvaluator.CustomerAgeKey, 501 } });
 
             //Act
             evaluator.Evaluate(context);

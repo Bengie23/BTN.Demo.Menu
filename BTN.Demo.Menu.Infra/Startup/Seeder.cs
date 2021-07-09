@@ -24,5 +24,21 @@ namespace BTN.Demo.Menu.Infra.Startup
 
             return services;
         }
+
+        public static async Task<IServiceCollection> SeedCountries(this IServiceCollection services)
+        {
+
+            var sp = services.BuildServiceProvider();
+            var repo = sp.GetRequiredService<IRepositoryDataSeeding<Country>>();
+
+            await repo.Reset();
+
+            var drinkDataSeed = new CountryDataSeed(repo);
+
+            await drinkDataSeed.Run();
+
+            return services;
+
+        }
     }
 }

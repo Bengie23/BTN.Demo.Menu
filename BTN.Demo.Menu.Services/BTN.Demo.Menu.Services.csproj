@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BTN.Demo.Menu.Domain\BTN.Demo.Menu.Domain.csproj" />
+    <ProjectReference Include="..\BTN.Demo.Menu.Infra\BTN.Demo.Menu.Infra.csproj" />
   </ItemGroup>
 
 </Project>

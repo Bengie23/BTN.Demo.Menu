@@ -1,5 +1,6 @@
 ﻿using BTN.Demo.Menu.Domain.Entities;
 using BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest;
+using BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest.Evaluators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -16,20 +17,10 @@ namespace BTN.Demo.Menu.Tests.Domain.Requests.DrinkMenuRequest
             //Arrange
             var data = new List<Drink>();
             //Act
-            var context = new DrinkMenuContext(data.AsQueryable(), 1);
+            var context = new DrinkMenuContext(data.AsQueryable(), new Dictionary<string, object>() { { AgeEvaluator.CustomerAgeKey, 1 } });
 
             //Assert
             Assert.IsNotNull(context);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void NewDrinkMenuContext_Throws_When_NotValid_CustomerAge()
-        {
-            //Arrange
-            var data = new List<Drink>();
-            //Act
-            var context = new DrinkMenuContext(data.AsQueryable(), 0);
         }
 
         [TestMethod]
@@ -39,7 +30,7 @@ namespace BTN.Demo.Menu.Tests.Domain.Requests.DrinkMenuRequest
             //Arrange
             var data = new List<Drink>();
             //Act
-            var context = new DrinkMenuContext(null, 1);
+            var context = new DrinkMenuContext(null, new Dictionary<string, object>() { { AgeEvaluator.CustomerAgeKey, 1 } });
         }
     }
 }

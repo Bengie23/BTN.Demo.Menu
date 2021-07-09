@@ -65,17 +65,17 @@ namespace BTN.Demo.Menu.Data.Data
             List<Drink> drinks = new List<Drink>();
             string brandName = "Cigar City";
 
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Maduro Beer", AvailableAtAge = 18 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Guayabera Beer", AvailableAtAge = 18 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Lager Beer", AvailableAtAge = 18 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Cuba Espresso Beer", AvailableAtAge = 18 });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Maduro Beer", AvailableAtAge = 18, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Guayabera Beer", AvailableAtAge = 18, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Lager Beer", AvailableAtAge = 18, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Cuba Espresso Beer", AvailableAtAge = 18, IsAlcoholicDrink = true });
 
             brandName = "The Crown Group";
 
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Corona Beer", AvailableAtAge = 18 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Coronita Beer", AvailableAtAge = 18 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Corona Brown Beer", AvailableAtAge = 18 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Corona light Beer", AvailableAtAge = 18 });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Corona Beer", AvailableAtAge = 18, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Coronita Beer", AvailableAtAge = 18, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Corona Brown Beer", AvailableAtAge = 18, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Corona light Beer", AvailableAtAge = 18, IsAlcoholicDrink = true });
 
 
             return drinks;

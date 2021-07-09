@@ -4,6 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BTN.Demo.Menu.Infra.Startup;
+using BTN.Demo.Menu.Domain.Requests;
+using BTN.Demo.Menu.Infra.Configuration;
+using BTN.Demo.Menu.Services;
 
 namespace BTN.Demo.Menu
 {
@@ -19,11 +22,20 @@ namespace BTN.Demo.Menu
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.RegisterEvaluators();
+
             services.RegisterRepositories();
+
             services.RegisterServices();
+
             services.AddControllers();
 
             services.SeedDrinks().GetAwaiter().GetResult();
+            services.SeedCountries().GetAwaiter().GetResult();
+
+            var countryOptions = new CountryConfigurationOptions();
+            Configuration.GetSection(CountryConfigurationOptions.CountryConfigurationKey).Bind(countryOptions);
+            services.AddSingleton(countryOptions);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

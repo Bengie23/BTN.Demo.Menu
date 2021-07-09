@@ -1,5 +1,6 @@
 ﻿using BTN.Demo.Menu.Domain.Entities;
 using BTN.Demo.Menu.Domain.Validation;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest
@@ -9,29 +10,38 @@ namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest
     /// </summary>
     public class DrinkMenuContext : BaseRequestContext
     {
-        public int CustomerAge { get; set; }
+        private Dictionary<string, object> properties;
+
         public IQueryable<Drink> Data { get; set; }
 
 
-        public DrinkMenuContext(IQueryable<Drink> data, int customerAge)
+        public DrinkMenuContext(IQueryable<Drink> data, Dictionary<string,object> properties)
         {
             data.ValidateNotNull(nameof(data));
-            customerAge.ValidateGreaterThanZero(nameof(customerAge));
 
             this.Data = data;
-            this.CustomerAge = customerAge;
+            this.properties = properties;
         }
 
-        public bool EvaluateStock { get; set; }
-
-        public DrinkMenuContext(bool ignoreOutOfStockItems)
+        public object this[string key]
         {
-            this.EvaluateStock = ignoreOutOfStockItems;
-        }
+            get
+            {
+                if (properties.ContainsKey(key))
+                {
+                    return properties[key];
+                }
 
-        public DrinkMenuContext(IQueryable<Drink> data, int customerAge, bool ignoreOutOfStockItems) : this(data,customerAge)
-        {
-            this.EvaluateStock = ignoreOutOfStockItems;
+                return null;
+            }
+            set
+            {
+                //properties must be immutable
+                if (!properties.ContainsKey(key))
+                {
+                    properties.TryAdd(key, value);
+                }
+            }
         }
     }
 }
