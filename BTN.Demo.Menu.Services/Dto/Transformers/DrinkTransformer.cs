@@ -1,5 +1,4 @@
 ﻿using BTN.Demo.Menu.Domain.Entities;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace BTN.Demo.Menu.Services.Dto.Transformers
@@ -19,7 +18,8 @@ namespace BTN.Demo.Menu.Services.Dto.Transformers
             return new DrinkDto
             {
                 Name = drink.Name,
-                BrandName = drink.BrandName
+                BrandName = drink.BrandName,
+                InStock = drink.InStock
             };
         }
 

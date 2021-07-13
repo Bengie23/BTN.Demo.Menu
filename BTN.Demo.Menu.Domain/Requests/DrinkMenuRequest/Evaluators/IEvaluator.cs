@@ -1,4 +1,6 @@
-﻿namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest
+﻿using BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest.Context;
+
+namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest.Evaluators
 {
     /// <summary>
     /// Interface for evaluator instances of Drink Menu

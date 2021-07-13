@@ -2,7 +2,6 @@
 using BTN.Demo.Menu.Data.Repositories;
 using BTN.Demo.Menu.Domain.Entities;
 using BTN.Demo.Menu.Domain.Interfaces;
-using BTN.Demo.Menu.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BTN.Demo.Menu.Infra.Startup
@@ -22,18 +21,11 @@ namespace BTN.Demo.Menu.Infra.Startup
             services.AddSingleton(new DrinkDbContext());
             services.AddSingleton<IDrinksRepository, DrinksRepository>();
             services.AddTransient(typeof(IRepositoryDataSeeding<Drink>), typeof(DrinksRepository));
-            
-            return services;
-        }
 
-        /// <summary>
-        /// Register Services
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection RegisterServices(this IServiceCollection services)
-        {
-            services.AddSingleton<IDrinksService, DrinksService>();
+            services.AddSingleton(new CountryDbContext());
+            services.AddSingleton<ICountryRepository, CountryRepository>();
+            services.AddTransient(typeof(IRepositoryDataSeeding<Country>), typeof(CountryRepository));
+            
             return services;
         }
 
