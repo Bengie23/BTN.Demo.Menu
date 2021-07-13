@@ -86,10 +86,10 @@ namespace BTN.Demo.Menu.Data.Data
             List<Drink> drinks = new List<Drink>();
             string brandName = "The Strong Stuff Company";
 
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Tequila", AvailableAtAge = 21 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Whisky", AvailableAtAge = 21 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Vodka", AvailableAtAge = 21 });
-            drinks.Add(new Drink() { BrandName = brandName, Name = "Mezcal", AvailableAtAge = 21 });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Tequila", AvailableAtAge = 21, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Whisky", AvailableAtAge = 21, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Vodka", AvailableAtAge = 21, IsAlcoholicDrink = true });
+            drinks.Add(new Drink() { BrandName = brandName, Name = "Mezcal", AvailableAtAge = 21, IsAlcoholicDrink = true });
 
             return drinks;
         }

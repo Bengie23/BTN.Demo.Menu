@@ -3,7 +3,7 @@ using BTN.Demo.Menu.Domain.Validation;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest
+namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest.Context
 {
     /// <summary>
     /// Represents the variables of a context to be evaluated

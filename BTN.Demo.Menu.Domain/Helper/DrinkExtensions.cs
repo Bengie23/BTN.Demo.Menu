@@ -2,8 +2,15 @@
 
 namespace BTN.Demo.Menu.Domain.Helper
 {
+    /// <summary>
+    /// Extension class for Drink
+    /// </summary>
     public static class DrinkExtensions
     {
+        /// <summary>
+        /// Generate a random boolean
+        /// </summary>
+        /// <returns></returns>
         public static bool RandomInStock()
         {
             bool inStock = false;

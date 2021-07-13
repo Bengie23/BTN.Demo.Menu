@@ -7,6 +7,12 @@ namespace BTN.Demo.Menu.Domain.Requests.DrinkMenuRequest.Evaluators
     /// </summary>
     public static class EvaluatorSelector
     {
+        /// <summary>
+        /// Returns evaluator based on fiven type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="evaluators"></param>
+        /// <returns></returns>
         public static IEvaluator Select<T>(this IEnumerable<IEvaluator> evaluators) where T : IEvaluator
         {
             IEvaluator result = null;

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BTN.Demo.Menu.Data.Data
 {
+    /// <summary>
+    /// Seeds data into a persistance layer for Country Entity
+    /// </summary>
     public class CountryDataSeed
     {
         private readonly IRepositoryDataSeeding<Country> repositoryDataSeeding;
@@ -17,6 +20,10 @@ namespace BTN.Demo.Menu.Data.Data
             this.repositoryDataSeeding = repositoryDataSeeding;
         }
 
+        /// <summary>
+        /// Performs the action of seeding data
+        /// </summary>
+        /// <returns></returns>
         public async Task Run()
         {
             List<Country> countries = new List<Country>();

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace BTN.Demo.Menu.Data.Repositories
 {
+    /// <summary>
+    /// Repository layer for Country Entity
+    /// </summary>
     public class CountryRepository : IRepositoryDataSeeding<Country>, ICountryRepository
     {
         private readonly CountryDbContext context;
@@ -18,6 +21,7 @@ namespace BTN.Demo.Menu.Data.Repositories
 
             this.context = context;
         }
+        /// <inheritdoc cref="ICountryRepository.GetCountry(string)"/>
         public async Task<Country> GetCountry(string code)
         {
             var all = await context.GetAll();
@@ -25,11 +29,13 @@ namespace BTN.Demo.Menu.Data.Repositories
             return all.FirstOrDefault(c => c.Code == code);
         }
 
+        /// <inheritdoc cref="IRepositoryDataSeeding{T}.Reset"/>
         public async Task Reset()
         {
             await context.Reset();
         }
 
+        /// <inheritdoc cref="IRepositoryDataSeeding{T}.Seed(IEnumerable{T})"/>
         public async Task Seed(IEnumerable<Country> data)
         {
             List<Task> tasks = new List<Task>();

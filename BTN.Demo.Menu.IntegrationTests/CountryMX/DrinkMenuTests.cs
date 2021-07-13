@@ -1,11 +1,10 @@
 ﻿using BTN.Demo.Menu.Services.Dto;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BTN.Demo.Menu.IntegrationTests
+namespace BTN.Demo.Menu.IntegrationTests.CountryMX
 {
     [TestClass]
     public class DrinkMenuTests : BaseIntegrationTests
@@ -13,6 +12,8 @@ namespace BTN.Demo.Menu.IntegrationTests
         [ClassInitialize]
         public static async Task Initialize(TestContext context)
         {
+            //overwrites configuration values from appsettings.test.json
+            configValues = new Dictionary<string, string>() { { "CountryConfigurationOptions:CountryCode", "MX" } };
             await Initialize();
         }
 

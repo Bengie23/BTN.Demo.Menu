@@ -1,5 +1,8 @@
 ﻿namespace BTN.Demo.Menu.Domain.Entities
 {
+    /// <summary>
+    /// Country Entity
+    /// </summary>
     public class Country : BaseEntity
     {
         public string Name { get; set; }
