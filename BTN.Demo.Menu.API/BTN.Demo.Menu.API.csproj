@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BTN.Demo.Menu.Data\BTN.Demo.Menu.Data.csproj" />
     <ProjectReference Include="..\BTN.Demo.Menu.Infra\BTN.Demo.Menu.Infra.csproj" />
     <ProjectReference Include="..\BTN.Demo.Menu.Services\BTN.Demo.Menu.Services.csproj" />

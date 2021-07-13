@@ -12,6 +12,7 @@ namespace BTN.Demo.Menu
 {
     public class Startup
     {
+        private const string API_NAME = "BTN.DrinksMenuService.Demo";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,6 +31,11 @@ namespace BTN.Demo.Menu
 
             services.AddControllers();
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = API_NAME, Version = "v1" });
+            });
+
             services.SeedDrinks().GetAwaiter().GetResult();
             services.SeedCountries().GetAwaiter().GetResult();
 
@@ -45,6 +51,13 @@ namespace BTN.Demo.Menu
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", API_NAME);
+            });
 
             app.UseHttpsRedirection();
 
